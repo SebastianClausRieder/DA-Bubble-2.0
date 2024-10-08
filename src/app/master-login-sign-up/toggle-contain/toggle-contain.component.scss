@@ -1,0 +1,66 @@
+@import './../../../mixin.scss';
+
+.main-contain {
+    width: 100%;
+    height: 100%;
+
+    @include display($fd: column, $gap: 35px);
+
+    background-color: var(--blueBG);
+    border-radius: 200px 25px 25px 100px;
+    transition: transform 0.5s ease-in-out, border-radius 0.5s ease-in-out;
+
+    h1 {
+        color: var(--white);
+    }
+
+    p {
+        width: 400px;
+
+        font-size: 18px;
+        color: var(--white);
+        text-align: center;
+
+        margin: 0;
+    }
+
+    button {
+        width: 160px;
+        height: 45px;
+
+        border: 2px solid var(--white);
+        border-radius: var(--borderRadius);
+        background-color: transparent;
+
+        font-size: var(--fontSize);
+        color: var(--white);
+
+        &:hover {
+            box-shadow: 0 0 10px 0 var(--green) inset, 0 0 20px 2px var(--green);
+            border: 3px solid var(--green);
+            color: var(--green);
+            transform: scale(1.05);
+        }
+    }
+
+    &.slide-left {
+        transform: translateX(-100%);
+    }
+
+    &.switch-border-radius {
+        border-radius: 25px 200px 100px 25px;
+    }
+}
+
+.distance {
+    width: fit-content;
+    min-height: 45px;
+    max-height: 45px;
+
+    @include display();
+}
+
+app-strong-pw {
+    width: 200px;
+    height: 50px;
+}

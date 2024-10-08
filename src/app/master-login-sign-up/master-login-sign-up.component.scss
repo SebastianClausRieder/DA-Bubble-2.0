@@ -1,0 +1,186 @@
+@import './../../mixin.scss';
+
+main {
+    width: 100%;
+    height: 100%;
+
+    @include display();
+
+    position: relative;
+
+    app-start-logo {
+        position: absolute;
+        inset: 0;
+
+        pointer-events: none;
+        z-index: 9;
+    }
+
+    section {
+        width: 1260px;
+        max-width: 95%;
+        height: 760px;
+        max-height: 98%;
+
+        @include display();
+        position: relative;
+
+        background-color: var(--white);
+        border-radius: var(--borderRadius);
+        overflow: hidden;
+
+        .sign-area,
+        .pw-area {
+            width: 100%;
+            height: 100%;
+
+            @include display();
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            transition: all 0.7s ease-in-out;
+
+            .switch-contain,
+            app-toggle-contain {
+                width: 50%;
+                height: 100%;
+
+                @include display();
+
+                position: absolute;
+                top: 0;
+                transition: transform 0.5s ease-in-out;
+            }
+
+            .form-component {
+                width: 50%;
+                height: 100%;
+
+                position: absolute;
+                top: 0;
+                left: 0;
+
+                transition: all 0.6s ease-in-out;
+            }
+
+            app-sign-in {
+                opacity: 1;
+                z-index: 2;
+            }
+
+            .active-in {
+                opacity: 0;
+                z-index: 1;
+                transform: translateX(100%);
+                animation: opacityOff 0.6s;
+            }
+
+            app-sign-up {
+                opacity: 0;
+                z-index: 1;
+            }
+
+            .active-up {
+                opacity: 1;
+                z-index: 2;
+                transform: translateX(100%);
+                animation: opacityOn 0.6s;
+            }
+
+            app-toggle-contain {
+                right: 0;
+                z-index: 3;
+
+                &.slide-left {
+                    transform: translateX(-100%);
+                }
+            }
+        }
+
+        .sign-area {
+            opacity: 1;
+
+            &.switch-area-off {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+
+        .pw-area {
+            transform: translateY(-100%);
+            opacity: 0;
+
+            &.switch-area-on {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            app-forgot-password {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+    footer {
+        width: 450px;
+        height: 50px;
+
+        @include display($jc: space-between);
+        position: absolute;
+        bottom: 25px;
+
+        a {
+            width: fit-content;
+            height: fit-content;
+
+            font-size: var(--fontSize);
+            color: var(--blue);
+            text-decoration: none;
+
+            padding: 10px 25px;
+
+            border: 1px solid transparent;
+            border-radius: var(--borderRadius);
+
+            &:hover {
+                color: var(--turquoise);
+                text-decoration: underline;
+
+                border: 1px solid var(--turquoise);
+            }
+        }
+    }
+
+    summary {
+        width: 650px;
+        height: 175px;
+
+        @include display();
+        position: absolute;
+        right: 25px;
+        bottom: 25px;
+
+        background-color: var(--turquoise2);
+        border-radius: var(--borderRadius);
+        border-top-left-radius: 75px;
+        border-bottom-right-radius: 10px;
+
+        z-index: 9;
+        pointer-events: none;
+
+        transform: translateY(125%);
+        transition: all 0.500s ease-in-out;
+
+        h3 {
+            font-weight: 800;
+            color: var(--white);
+            text-align: center;
+        }
+
+        &.show-alert {
+            transform: translateY(0);
+        }
+    }
+}
